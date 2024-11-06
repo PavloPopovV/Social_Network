@@ -25,7 +25,7 @@ export const SocketContextProvider = ({children}: {children: JSX.Element}) => {
 
   useEffect(() => {
     if (isAuthenticated && authUser) {
-      const newSocket = io("http://localhost:5000", {
+      const newSocket = io("https://social-network-qptv.onrender.com", {
         query: {
           userId: authUser._id,  
         }, 
