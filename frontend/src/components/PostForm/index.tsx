@@ -5,6 +5,7 @@ import { usePostActions } from "../../hooks/usePostActions"
 import { User } from "../../app/types"
 import Input from "../../ui/Input"
 import PrimaryButton from "../../ui/PrimaryButton"
+import { useParams } from "react-router-dom"
 
 export type PostFormValue = {
   content: string
@@ -17,6 +18,7 @@ export type PostListProps = {
 }
 
 const PostForm = ({ type }: { type: PostFormType }) => {
+  const {id:postId} = useParams<{id:string}>()
   const current = useSelector(selectCurrent) as User
   const { fetchCreatePost, fetchEditPost } = usePostActions( )
 
@@ -33,11 +35,7 @@ const PostForm = ({ type }: { type: PostFormType }) => {
   })
 
   const onSubmit = (content: PostFormValue) => {
-    if(type === 'create'){
-      fetchCreatePost(content)
-    }else if (current._id) {
-      fetchEditPost(content, current._id)
-    }
+    type === 'create' ?  fetchCreatePost(content) : fetchEditPost(content, postId || "")
     reset()
   }
 

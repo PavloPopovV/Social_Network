@@ -9,6 +9,7 @@ import Input from "../../ui/Input"
 
 
 const EditProfile = () => {
+  
   const current = useSelector(selectCurrent) as User
   const { fetchEditUser } = useEditProfile();
   
