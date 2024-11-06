@@ -1,0 +1,15 @@
+export const PATHS = {
+    REGISTER: '/registration',
+    LOGIN: '/login',
+    HOME: '/',
+    POSTS: '/posts',
+    POST: (id?: string) => id ? `/posts/${id}` : `/posts/:id`,
+    PROFILE: (id?: string) => id ? `/profile/${id}` : `/profile/:id`,
+    FOLLOWERS: (id?: string) => id ? `/followers/${id}` : `/followers/:id`,
+    FOLLOWING: (id?: string) => id ? `/following/${id}` : `/following/:id`,
+    EDITUSER: "/edit",
+    CREATE: "/create",
+    EDITPOST: (id?: string) => id ? `/edit/post/${id}` : `/edit/post/:id`,
+    CONVERSATION: (id?: string) => id ? `/conversation/${id}` : `/conversation/:id`,
+    DIRECT: "/direct",
+}
