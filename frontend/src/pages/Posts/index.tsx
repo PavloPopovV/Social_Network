@@ -6,7 +6,7 @@ import PostCardSkeleton from "../../ui/PostCard/skeleton";
 const Posts = () => {
   const { data, isLoading } = useGetAllPostsQuery('')
   const latestPosts = data ? [...data].reverse() : []
-
+  
   return (
     <ul className="w-[600px]">
       <SearchField/>

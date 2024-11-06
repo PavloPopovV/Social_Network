@@ -28,7 +28,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
   const handleLikesPost = async () => {
     try {
-      post.likedByUser  ?  await fetchUnLikePost(post._id, isSinglePostPage, id) : await fetchLikePost(post._id, isSinglePostPage, id)
+      post.likedByUser ? await fetchUnLikePost(post._id, isSinglePostPage, id) : await fetchLikePost(post._id, isSinglePostPage, id)
     } catch (error) {
       console.log(error)
     }

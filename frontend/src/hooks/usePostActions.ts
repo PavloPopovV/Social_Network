@@ -44,7 +44,9 @@ export const usePostActions = () => {
     const fetchLikePost = async (postId: string, isSinglePostPage: boolean, id?: string) => {
         try {
             await likePost(postId).unwrap()
-            id && isSinglePostPage ? await triggerGetPostById(id) : await triggerGetPost( id ).unwrap();
+            if (isSinglePostPage) await triggerGetPostById(id || "").unwrap();
+            else if (id) await triggerGetPost(id).unwrap();
+            else await triggerGetPost("").unwrap();
         } catch (error) {
             console.log(error)
         }
@@ -53,7 +55,9 @@ export const usePostActions = () => {
     const fetchUnLikePost = async (postId: string, isSinglePostPage: boolean, id?: string) => {
         try {
             await unlikePost(postId).unwrap()
-            id && isSinglePostPage ? await triggerGetPostById(id) : await triggerGetPost(id).unwrap();
+            if (isSinglePostPage) await triggerGetPostById(id || "").unwrap();
+            else if (id) await triggerGetPost(id).unwrap();
+            else await triggerGetPost("").unwrap();
         } catch (error) {
             console.log(error)
         }
